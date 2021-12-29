@@ -1,0 +1,30 @@
+{
+  "name": "farmer-survey-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srinivas-reddy-a/farmer-survey-backend.git"
+  },
+  "author": "srinivas reddy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srinivas-reddy-a/farmer-survey-backend/issues"
+  },
+  "homepage": "https://github.com/srinivas-reddy-a/farmer-survey-backend#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-async-handler": "^1.2.0",
+    "knex": "^0.95.14",
+    "mysql": "^2.18.1"
+  }
+}
