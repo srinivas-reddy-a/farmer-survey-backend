@@ -85,12 +85,4 @@ userRouter.get(
     })
 )
 
-userRouter.get(
-    '/test/'
-    ,expressAsyncHandler(async (req, res) => {
-        res.send({
-            message:"allo"
-        })
-    }))
-
 export default userRouter;
