@@ -73,7 +73,7 @@ userRouter.get(
             }).catch(err => {
                 res.status(400).send({
                     success:false,
-                    message:"db error"
+                    message:err
                 })
             })
         } catch (error) {
