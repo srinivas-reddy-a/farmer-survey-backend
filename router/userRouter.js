@@ -7,7 +7,7 @@ const userRouter = express();
 userRouter.post(
     '/',
     expressAsyncHandler(async (req, res) => {
-        const {
+        let {
             name,
             number,
             village,
@@ -15,8 +15,12 @@ userRouter.post(
             problems,
             needs
         } = req.body;
+        name = name.trim();
+        village = village.trim();
+        problems = problems.trim();
+        needs = needs.trim();
         try {
-            await db.transaction( trx => {
+            await db.transaction(async trx => {
                 return trx('user')
                 .where('number', '=', number)
                 .then(user => {
@@ -62,10 +66,25 @@ userRouter.post(
 userRouter.get(
     '/',
     expressAsyncHandler(async (req, res) => {
-        console.log("allo")
+        const limit = req.query.limit || 1000000;
         try {
             await db('user')
-            .select('*')
+            .where((qb) => {
+                if(req.query.name){
+                    qb.where('name','like',`%${req.query.name}%`)
+                }
+                if(req.query.number){
+                    qb.where('number','like',`%${req.query.number}%`)
+                }
+                if(req.query.village){
+                    qb.where('village','like',`%${req.query.village}%`)
+                }
+                if(req.query.pincode){
+                    qb.where('pincode','like',`%${req.query.pincode}%`)
+                }
+            })
+            .limit(limit)
+            .orderBy('name','asc')
             .then(users => {
                 res.status(200).send({
                     success:true,
@@ -85,5 +104,6 @@ userRouter.get(
         }
     })
 )
+
 
 export default userRouter;
