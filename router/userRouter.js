@@ -16,14 +16,14 @@ userRouter.post(
             needs
         } = req.body;
         name = name.trim();
-        village = village.trim();
-        problems = problems.trim();
-        needs = needs.trim();
+        village?village = village.trim():village
+        problems?problems.trim():problems
+        needs?needs.trim():needs
         try {
             await db.transaction(async trx => {
                 return trx('user')
                 .where('number', '=', number)
-                .then(user => {
+                .then(async user => {
                     if(!user.length){
                         return trx('user')
                         .insert({
