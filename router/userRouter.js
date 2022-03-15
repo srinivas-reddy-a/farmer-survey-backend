@@ -60,8 +60,9 @@ userRouter.post(
 )
 
 userRouter.get(
-    '',
+    '/',
     expressAsyncHandler(async (req, res) => {
+        console.log("allo")
         try {
             await db('user')
             .select('*')

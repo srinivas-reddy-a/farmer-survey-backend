@@ -26,8 +26,6 @@
     "express": "^4.17.1",
     "express-async-handler": "^1.2.0",
     "knex": "^0.95.14",
-    "mongoose": "^6.1.4",
-    "mysql": "^2.18.1",
     "pg": "^8.7.1"
   }
 }
