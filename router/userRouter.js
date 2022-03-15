@@ -85,7 +85,7 @@ userRouter.get(
                 }
             })
             .limit(limit)
-            .orderBy('name','asc')
+            .orderBy('id','desc')
             .then(users => {
                 res.status(200).send({
                     success:true,
