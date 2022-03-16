@@ -71,17 +71,11 @@ userRouter.get(
         try {
             await db('user')
             .where((qb) => {
-                if(req.query.name){
-                    qb.where('name','like',`%${req.query.name}%`)
-                }
-                if(req.query.number){
-                    qb.where('number','like',`%${req.query.number}%`)
-                }
-                if(req.query.village){
-                    qb.where('village','like',`%${req.query.village}%`)
-                }
-                if(req.query.pincode){
-                    qb.where('pincode','like',`%${req.query.pincode}%`)
+                if(req.query.search){
+                    qb.where('name','like',`%${req.query.search}%`)
+                    .orWhere('number','like',`%${req.query.search}%`)
+                    .orWhere('village','like',`%${req.query.search}%`)
+                    .orWhere('pincode','like',`%${req.query.search}%`)
                 }
             })
             .limit(limit)
